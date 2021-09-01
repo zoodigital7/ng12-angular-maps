@@ -1,0 +1,32 @@
+<div class="fluid-container">
+  <div class="row">
+    <div class="col-12">
+      <h2>Map</h2>
+    </div>
+    <div class="col-12">
+      <google-map #newMap height="95vh" width="100%" [zoom]="zoom" [center]="center" [options]="options">
+        <map-marker
+        *ngFor="let marker of markers"
+        [position]="{lat: +marker.lat, lng: +marker.lng}"
+        [label]="marker.label"
+        [icon]="marker.icon"
+        [options]="marker.options"
+        (mapClick)="setSelectedAsset(marker)"
+      >
+      </map-marker>
+      <map-circle
+        *ngFor="let circle of mapCircles"
+        [center]="circle.center"
+        [radius]="circle.radius"
+        (mapClick)="setSelectedAsset(marker)"
+      >
+      </map-circle>
+      <map-polyline
+      *ngFor="let x of mapLines"
+      [path]="x.path"
+    >
+    </map-polyline>
+      </google-map>
+    </div>
+  </div>
+</div>

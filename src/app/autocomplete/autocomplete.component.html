@@ -1,0 +1,13 @@
+<div class="form-group mt-4">
+  <input type="text" class="form-control" (keydown.enter)="$event.preventDefault()"
+    placeholder="Search For Location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text"
+    #addressInput>
+</div>
+<div *ngIf="address" class="form-group row mt-4">
+  <div class="col-12">
+    <h4>Selected Address:</h4>
+  </div>
+  <div class="col-12">
+    <h5>{{address}}</h5>
+  </div>
+</div>

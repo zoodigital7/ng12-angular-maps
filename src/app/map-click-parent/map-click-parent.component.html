@@ -1,0 +1,14 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <h2>Map Click GeoLocation With Output/Input</h2>
+    </div>
+    <div class="col-12 d-inline-flex">
+      <p class="flex">Input LatLng: <span *ngIf="inputLatLng">{{inputLatLng | json}}</span><span *ngIf="!inputLatLng">NULL</span></p>
+      <p class="flex ml-5">Output LatLng: <span *ngIf="outputLatLng">{{outputLatLng | json}}</span><span *ngIf="!outputLatLng">NULL</span></p>
+    </div>
+    <div class="col-12">
+      <app-map-click-geolocation [inputLatLng]="inputLatLng" (markerPosition)="setMarkerLatLng($event)"></app-map-click-geolocation>
+    </div>
+  </div>
+</div>

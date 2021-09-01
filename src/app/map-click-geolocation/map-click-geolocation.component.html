@@ -1,0 +1,22 @@
+<div class="fluid-container">
+  <div class="row">
+    <div class="col-12">
+      <h2>Map Click GeoLocation</h2>
+    </div>
+  </div>
+  <div class="col-12">
+    <google-map  #newMap height="95vh" width="100%" [center]="center" [zoom]="zoom" (mapClick)="setMarker($event)">
+      <map-marker
+      *ngIf="marker"
+      [position]="{lat: +marker.lat, lng: +marker.lng}"
+      [label]="marker.label"
+      [icon]="marker.icon"
+      [options]="marker.options"
+      (mapDragend)="setMarkerPositionAfterDragEnd($event)"
+    >
+    </map-marker>
+    </google-map>
+  </div>
+</div>
+
+

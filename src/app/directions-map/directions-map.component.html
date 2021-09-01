@@ -1,0 +1,30 @@
+<div class="fluid-container">
+  <div *ngIf="showAddressInputs" class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2>Enter Addresses for Directions</h2>
+      </div>
+      <div class="col-6">
+        <app-autocomplete [origin]="true" [outputAddress]="true" (addressEntered)="setEnteredOrigin($event)"></app-autocomplete>
+      </div>
+      <div class="col-6">
+        <app-autocomplete [destination]="true" [outputAddress]="true" (addressEntered)="setEnteredDestination($event)"></app-autocomplete>
+      </div>
+      <div *ngIf="enteredOrigin && enteredDestination" lass="col-12 text-right">
+          <button class="btn btn-primary" (click)="closeAddressInputsAndGetDirections()">Show Directions</button>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <h2>Directions Map</h2>
+    </div>
+    <div class="col-12">
+      <google-map #newMap height="95vh" width="100%" [zoom]="zoom" [center]="center" [options]="options">
+        <map-directions-renderer *ngIf="(directionsResults$ | async) as directionsResults"
+          [directions]="directionsResults">
+        </map-directions-renderer>
+      </google-map>
+    </div>
+  </div>
+</div>
